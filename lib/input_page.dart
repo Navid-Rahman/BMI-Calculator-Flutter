@@ -15,31 +15,19 @@ class _InputPageState extends State<InputPage> {
         title: const Text('BMI Calculator'),
         centerTitle: true,
       ),
-      body: Column(
+      body: const Column(
         children: <Widget>[
           Expanded(
               child: Row(
             children: <Widget>[
               Expanded(
-                child: Container(
-                  height: 200.0,
-                  width: 170.0,
-                  margin: const EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1D1E33),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+                child: ReusableCard(
+                  colour: Color(0xFF1D1E33),
                 ),
               ),
               Expanded(
-                child: Container(
-                  height: 200.0,
-                  width: 170.0,
-                  margin: const EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1D1E33),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+                child: ReusableCard(
+                  colour: Color(0xFF1D1E33),
                 ),
               ),
             ],
@@ -48,14 +36,8 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: <Widget>[
               Expanded(
-                child: Container(
-                  height: 200.0,
-                  width: 170.0,
-                  margin: const EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1D1E33),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+                child: ReusableCard(
+                  colour: Color(0xFF1D1E33),
                 ),
               ),
             ],
@@ -64,25 +46,13 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: <Widget>[
               Expanded(
-                child: Container(
-                  height: 200.0,
-                  width: 170.0,
-                  margin: const EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1D1E33),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+                child: ReusableCard(
+                  colour: Color(0xFF1D1E33),
                 ),
               ),
               Expanded(
-                child: Container(
-                  height: 200.0,
-                  width: 170.0,
-                  margin: const EdgeInsets.all(15.0),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1D1E33),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
+                child: ReusableCard(
+                  colour: Color(0xFF1D1E33),
                 ),
               ),
             ],
@@ -93,13 +63,21 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
+class ReusableCard extends StatelessWidget {
+  const ReusableCard({super.key, required this.colour});
 
-// Container(
-//         height: 200.0,
-//         width: 170.0,
-//         margin: const EdgeInsets.all(15.0),
-//         decoration: BoxDecoration(
-//           color: const Color(0xFF1D1E33),
-//           borderRadius: BorderRadius.circular(10.0),
-//         ),
-//       ),
+  final Color colour;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200.0,
+      width: 170.0,
+      margin: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: colour,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    );
+  }
+}
