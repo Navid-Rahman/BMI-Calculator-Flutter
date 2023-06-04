@@ -18,12 +18,11 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Color femaleCardColor = kInactiveCardColor;
-  // Gender selectedGender;
+  Color maleCardColor = kInactiveCardColor;
 
   int height = 180;
-
-  Color maleCardColor = kInactiveCardColor;
   int weight = 60;
+  int age = 20;
 
   void updateColor(Gender selectedGender) {
     if (selectedGender == Gender.male) {
@@ -165,14 +164,28 @@ class _InputPageState extends State<InputPage> {
                         weight.toString(),
                         style: kNumberTextStyle,
                       ),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          RoundIconButton(icon: FontAwesomeIcons.plus),
-                          SizedBox(
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                            onPressed: () {
+                              setState(() {
+                                weight--;
+                              });
+                            },
+                          ),
+                          const SizedBox(
                             width: 10.0,
                           ),
-                          RoundIconButton(icon: FontAwesomeIcons.minus),
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
+                            onPressed: () {
+                              setState(() {
+                                weight++;
+                              });
+                            },
+                          ),
                         ],
                       ),
                     ],
@@ -181,12 +194,43 @@ class _InputPageState extends State<InputPage> {
               ),
               Expanded(
                 child: ReusableCard(
-                  // onPress: () {
-                  //   setState(() {
-                  //     print('Hello');
-                  //   });
-                  // },
                   colour: kActiveCardColor,
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'AGE',
+                        style: kLabelTextStyle,
+                      ),
+                      Text(
+                        age.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                            onPressed: () {
+                              setState(() {
+                                age--;
+                              });
+                            },
+                          ),
+                          const SizedBox(
+                            width: 10.0,
+                          ),
+                          RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              })
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -204,14 +248,15 @@ class _InputPageState extends State<InputPage> {
 }
 
 class RoundIconButton extends StatelessWidget {
-  const RoundIconButton({super.key, required this.icon});
+  RoundIconButton({super.key, required this.icon, required this.onPressed});
 
   final IconData icon;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      onPressed: () {},
+      onPressed: onPressed,
       shape: const CircleBorder(),
       fillColor: const Color(0xFF4C4F5E),
       elevation: 6.0,
