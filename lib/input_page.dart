@@ -203,8 +203,6 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-//For testing
-
 class RoundIconButton extends StatelessWidget {
   const RoundIconButton({super.key, required this.icon});
 
